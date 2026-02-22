@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Dashboard() {
   return (
-    <div className="flex grid grid-cols-3 grid-rows-8 flex-1 self-stretch gap-2">
+    <div className="grid grid-cols-3 grid-rows-8 flex-1 self-stretch gap-2">
       <div className="bg-white rounded-xl border border-[#00000032] col-span-3 row-span-1 flex justify-between items-center p-5">
         <div>
           <span className="text-2xl font-semibold text-[#0B745B]">
