@@ -32,9 +32,9 @@ export default function Sidebar(){
                 offene Forderungen
             </Link>
             <hr className="text-[#fff] w-[50%]" />
-            <Link href="/vorlagen-bearbeiten" className={`${pathname === '/vorlagen-bearbeiten' ? "text-[#fff]" : "text-[#ffffffa8]"} flex items-center gap-3 hover:text-[#fff] transition`}>
-                <FileCog size="1.1em" />
-                Vorlagen bearbeiten
+            <Link href="/vorlagen" className={`${pathname === '/vorlagen' ? "text-[#fff]" : "text-[#ffffffa8]"} flex items-center gap-3 hover:text-[#fff] transition`}>
+                <FileCog size="1.1em" /> 
+                Vorlagen
             </Link>
         </div>
     )
