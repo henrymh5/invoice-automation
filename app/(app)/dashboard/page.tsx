@@ -48,7 +48,7 @@ function Tasks() {
       <div className="flex items-center justify-between">
         <div>Muster GmbH</div>
         <div>
-          30. Juni 2026{" "}
+          30. Juni 2026
           <span className="text-[#0B745B] text-xl ml-2 font-semibold">
             +1250,-€
           </span>
@@ -61,7 +61,7 @@ function Tasks() {
       <div className="flex items-center justify-between">
         <div>Muster GmbH</div>
         <div>
-          30. Juni 2026{" "}
+          30. Juni 2026
           <span className="text-[#c72323] text-xl ml-2 font-semibold">
             -1250,-€
           </span>
