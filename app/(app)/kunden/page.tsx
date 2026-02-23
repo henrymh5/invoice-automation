@@ -5,7 +5,10 @@ import {
   Repeat2,
   CircleSlash2,
   BanknoteArrowDown,
-  TrashIcon
+  TrashIcon,
+  CircleCheck,
+  CircleX,
+  Calendar1
 } from "lucide-react";
 
 import Image from "next/image";
@@ -173,6 +176,10 @@ function TableSettings() {
   );
 }
 
+interface CustomerProps {
+    status: string,
+}
+
 function CustomerTable(){
     return (
         <div className="rounded-lg overflow-hidden mt-5">
@@ -185,25 +192,35 @@ function CustomerTable(){
                 <div className="flex-1 text-[#ffffffd9]">Letzte Bestellung</div>
                 <div className="flex-1 text-[#ffffffd9]">Aktionen</div>
             </div>
-            <Customer />
-            <Customer />
-            <Customer />
-            <Customer />
-            <Customer />
+            <Customer status="active" />
+            <Customer status="inactive" />
+            <Customer status="active" />
+            <Customer status="active" />
+            <Customer status="inactive" />
         </div>
     )
 }
 
-function Customer(){
+
+function Customer({status}: CustomerProps){
     return (
-        <div className="flex items-stretch justify-start bg-white w-full Customer p-2 hover:opacity-50 cursor-pointer transition">
+        <div className="flex items-center justify-start bg-white w-full Customer p-2 opacity-65 hover:opacity-100 cursor-pointer transition">
             <div className="flex-1">#9354</div>
             <div className="flex-1">Henry Korte</div>
             <div className="flex-1">#73450</div>
-            <div className="flex-1">Aktiv</div>
             <div className="flex-1">3.560,23€</div>
-            <div className="flex-1">09.09.2025</div>
-            <div className="flex-1"><TrashIcon /></div>
+            <div className="flex-1"><Status status={status} /></div>
+            <div className="flex-1 flex items-center justify-start gap-2"><Calendar1 size={17}/>09.09.2025</div>
+            <div className="flex-1"><TrashIcon size={17} /></div>
         </div>
     )
+}
+
+function Status({status} : CustomerProps){
+    
+    if (status === "active"){
+    return <div className="bg-[#C0FFB7] w-fit px-2 rounded-2xl text-[#41D315] flex gap-1 items-center justify-center"><CircleCheck size={15} /> Aktiv</div>
+    }
+
+    return <div className="bg-[#FFB8B8] w-fit px-2 rounded-2xl text-[#D31515] flex gap-1 items-center justify-center"><CircleX size={15}/>Inaktiv</div>
 }
