@@ -1,3 +1,5 @@
+'use client'
+
 import {
   ChevronDown,
   Users,
@@ -5,9 +7,14 @@ import {
   Repeat2,
   CircleSlash2,
   BanknoteArrowDown,
-  TrashIcon
+  TrashIcon,
+  CircleCheck,
+  CircleX,
+  Calendar1,
+  Eye,
+  EyeClosed
 } from "lucide-react";
-
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Kunden() {
@@ -26,7 +33,7 @@ export default function Kunden() {
         </div>
       </div>
       <CustomerStatistics />
-      <div className="col-span-3 row-span 7">
+      <div className="col-span-3 row-span-7 flex flex-col relative">
           <TableSettings />
           <CustomerTable />
       </div>
@@ -139,15 +146,21 @@ function CustomerStatistics() {
 }
 
 function TableSettings() {
+ const [isOpen, setOpen] = useState(true);
   return (
     <div className="flex flex-col gap-5 pt-5">
-      <div className="flex items-center justify-start gap-5">
-        <div className="text-[#000000] py-2 relative active-panel">
-          Alle Kunden
+      <div className="flex items-center justify-between gap-5">
+        <div className="flex items-center justify-between gap-5">
+            <div className="text-[#000000] py-2 relative active-panel">
+              Alle Kunden
+            </div>
+            <div className="text-[#00000065] p-2">Aktiv</div>
         </div>
-        <div className="text-[#00000065] p-2">Aktiv</div>
+        <div>
+            {isOpen ? <Eye className="cursor-pointer" onClick={() => setOpen(!isOpen)} size={20}/> : <EyeClosed className="cursor-pointer" onClick={() => setOpen(!isOpen)}  size={20}/>}
+        </div>
       </div>
-      <div className="flex w-full justify-between">
+      <div className={`flex w-full justify-between ${!isOpen ? 'hidden' : ''}`}>
         <div className="flex gap-5">
           <form className="flex-1" action="">
             <input
@@ -173,10 +186,14 @@ function TableSettings() {
   );
 }
 
+interface CustomerProps {
+    status: string,
+}
+
 function CustomerTable(){
     return (
-        <div className="rounded-lg overflow-hidden mt-5">
-            <div className="flex items-stretch justify-start w-full bg-[#0B745B] p-2">
+        <div className="rounded-lg overflow-scroll h-full mt-5">
+            <div className="flex items-stretch justify-start w-full bg-[#0B745B] p-2  sticky top-0 left-0 z-1000">
                 <div className="flex-1 text-[#ffffffd9]">Kundennummer</div>
                 <div className="flex-1 text-[#ffffffd9]">Name</div>
                 <div className="flex-1 text-[#ffffffd9]">Bestellnummer</div>
@@ -185,25 +202,42 @@ function CustomerTable(){
                 <div className="flex-1 text-[#ffffffd9]">Letzte Bestellung</div>
                 <div className="flex-1 text-[#ffffffd9]">Aktionen</div>
             </div>
-            <Customer />
-            <Customer />
-            <Customer />
-            <Customer />
-            <Customer />
+            <Customer status="active" />
+            <Customer status="inactive" />
+            <Customer status="active" />
+            <Customer status="active" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
+            <Customer status="inactive" />
         </div>
     )
 }
 
-function Customer(){
+
+function Customer({status}: CustomerProps){
     return (
-        <div className="flex items-stretch justify-start bg-white w-full Customer p-2 hover:opacity-50 cursor-pointer transition">
+        <div className="flex items-center justify-start bg-white w-full Customer p-2 opacity-75 hover:opacity-100 cursor-pointer transition">
             <div className="flex-1">#9354</div>
-            <div className="flex-1">Henry Korte</div>
+            <div className="flex-1 flex justify-start items-center gap-2"><Image src="/mock-profil-bild.png" width={30} height={30} alt="Profilbild" />Henry Korte</div>
             <div className="flex-1">#73450</div>
-            <div className="flex-1">Aktiv</div>
             <div className="flex-1">3.560,23€</div>
-            <div className="flex-1">09.09.2025</div>
-            <div className="flex-1"><TrashIcon /></div>
+            <div className="flex-1"><Status status={status} /></div>
+            <div className="flex-1 flex items-center justify-start gap-2"><Calendar1 size={17}/>09.09.2025</div>
+            <div className="flex-1"><TrashIcon size={17} /></div>
         </div>
     )
+}
+
+function Status({status} : CustomerProps){
+    
+    if (status === "active"){
+    return <div className="bg-[#C0FFB7] w-fit px-2 rounded-2xl text-[#41D315] flex gap-1 items-center justify-center"><CircleCheck size={15} /> Aktiv</div>
+    }
+
+    return <div className="bg-[#FFB8B8] w-fit px-2 rounded-2xl text-[#D31515] flex gap-1 items-center justify-center"><CircleX size={15}/>Inaktiv</div>
 }

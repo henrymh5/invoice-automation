@@ -26,6 +26,6 @@ body {
   height: 1px;
   background: #0B745B;
 } 
-.Customer:nth-child(odd){
-  background: #00000013!important;
+.Customer:nth-child(odd){ 
+  background: transparent!important;
 }
