@@ -6,7 +6,6 @@ import {
     LayoutDashboard, 
     IdCard,
     ReceiptText,
-    BanknoteX,
     FileCog
 } from 'lucide-react'
 
@@ -26,10 +25,6 @@ export default function Sidebar(){
             <Link href="/rechnungen" className={`${pathname === '/rechnungen' ? "text-[#fff]" : "text-[#ffffffa8]"} flex items-center gap-3 hover:text-[#fff] transition`}>
                 <ReceiptText size="1.1em" />
                 Rechnungen
-            </Link>
-            <Link href="/forderungen" className={`${pathname === '/forderungen' ? "text-[#fff]" : "text-[#ffffffa8]"} flex items-center gap-3 hover:text-[#fff] transition`}>
-                <BanknoteX size="1.1em" />
-                offene Forderungen
             </Link>
             <hr className="text-[#fff] w-[50%]" />
             <Link href="/vorlagen" className={`${pathname === '/vorlagen' ? "text-[#fff]" : "text-[#ffffffa8]"} flex items-center gap-3 hover:text-[#fff] transition`}>
