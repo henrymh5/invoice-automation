@@ -310,7 +310,8 @@ function CustomerTable() {
   ]; // Mockdata before initializing a db
   return (
     <div className="rounded-lg border border-[#00000025] overflow-scroll h-full mt-5 pb-10">
-      <div className="flex items-stretch justify-start w-full bg-[#0B745B] p-2  sticky top-0 left-0 z-1000">
+      <div className="flex items-stretch justify-start w-full bg-[#0B745B] p-2 sticky top-0 left-0 z-1000">
+        <div className="flex-1 text-[#ffffffd9]">Auswahl</div>
         <div className="flex-1 text-[#ffffffd9]">Kundennummer</div>
         <div className="flex-1 text-[#ffffffd9]">Name</div>
         <div className="flex-1 text-[#ffffffd9]">Bestellnummer</div>
@@ -362,6 +363,7 @@ function Customer({
 }: CustomerProps) {
   return (
     <div className="flex items-center justify-start bg-white w-full Customer p-2 opacity-75 hover:opacity-100 cursor-pointer transition">
+      <div className="flex-1"><input type="checkbox" /></div>
       <div className="flex-1">#{id}</div>
       <div className="flex-1 flex justify-start items-center gap-2">
         <Image

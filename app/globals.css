@@ -29,3 +29,8 @@ body {
 .Customer:nth-child(odd){ 
   background: transparent!important;
 }
+.lockedScreen{
+  background: url('/locked-screen-background.png') no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
