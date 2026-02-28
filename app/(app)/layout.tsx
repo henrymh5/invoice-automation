@@ -11,7 +11,7 @@ export default async function AppLayout({
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center w-screen h-screen">
+      <div className="lockedScreen flex flex-col items-center justify-center w-screen h-screen">
         <h1 className="text-3xl">Logge dich ein,<br /> um diese Seite zu sehen</h1>
         <div className="mt-5 flex gap-2">
           <SignInButton>
