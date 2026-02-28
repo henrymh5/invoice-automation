@@ -34,3 +34,7 @@ body {
   background-size: cover;
   background-position: center center;
 }
+.TemplateCanvas{
+  max-width: 100%;
+  transform: translateX(-50%)!important;
+}
