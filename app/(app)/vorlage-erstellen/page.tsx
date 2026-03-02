@@ -1,5 +1,9 @@
+'use client'
+
 import { Menu, Minus, Plus } from "lucide-react";
 import MenuComponent from "./components/MenuComponent";
+import SelectedDraggable from "./components/SelectedDraggable";
+import { useState } from "react";
 
 export default function CreateTemplate() {
   return (
@@ -25,7 +29,11 @@ function TemplateCanvas() {
 }
 
 function ComponentMenu() {
+  const [itemSelected, setItemSelected] = useState("none");
+
   return (
+    <>
+    <SelectedDraggable image_url="customer-details-bg.png" selected={itemSelected} />
     <div className="flex flex-col gap-5 self-stretch bg-[#0A372C] w-full max-w-[350px] rounded-2xl py-5 px-3 overflow-scroll">
       <h3 className="text-xl text-white font-semibold">Vorlagen Bausteine</h3>
       <input
@@ -39,44 +47,21 @@ function ComponentMenu() {
           <h4 className="text-md text-white">Rechtlich notwendig</h4>
         </div>
         <MenuComponent title="Kundendaten" image_url="customer-details-bg.png" category="mandatory" />
-        <MenuComponent title="Kundendaten" image_url="customer-details-bg.png" category="mandatory" />
-        <MenuComponent title="Kundendaten" image_url="customer-details-bg.png" category="mandatory" />
-        <MenuComponent title="Kundendaten" image_url="customer-details-bg.png" category="mandatory" />
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/invoice-details-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Belegverweise
-        </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/business-information-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Unternehmensangaben
-        </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/invoice-items-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Rechnungsposten
-        </div>
+        <MenuComponent title="Belegverweise" image_url="invoice-details-bg.png" category="mandatory" />
+        <MenuComponent title="Unternehmensangaben" image_url="business-information-bg.png" category="mandatory" />
+        <MenuComponent title="Rechnungsposten" image_url="invoice-items-bg.png" category="mandatory" />
       </div>
 
       <div className="flex flex-wrap justify-start items-start gap-2">
         <div className="w-[100%] mb-2">
           <h4 className="text-md text-white">Layout</h4>
         </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/rows-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Reihen
-        </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/cols-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Spalten
-        </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/add-page-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Neue Seite
-        </div>
-        <div className="flex cursor-grab flex-col gap-2 basis-[48%] text-center flex-none items-center justify-center aspect-1/1 rounded-xl text-[#ffffffa5] text-sm">
-          <div className="bg-[#05261e] self-stretch flex-1 bg-[url(/tables-bg.png)] bg-no-repeat bg-cover rounded-xl"></div>
-          Tabelle
-        </div>
+        <MenuComponent title="Reihen" image_url="rows-bg.png" category="mandatory" />
+        <MenuComponent title="Spalten" image_url="cols-bg.png" category="mandatory" />
+        <MenuComponent title="Neue Seite" image_url="add-page-bg.png" category="mandatory" />
+        <MenuComponent title="Tabelle" image_url="tables-bg.png" category="mandatory" />
       </div>
     </div>
+    </>
   );
 }
